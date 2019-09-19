@@ -19,18 +19,18 @@ There is only one type of demo: the cat picture demo. So, here you go "Cats As A
 ```cfc
 catapi = new path.to.cfcat.catapi( apiKey = 'xxx' );
 
-randomCat = catapi.getRandomImage().data;
+randomCat = catapi.getRandom().data;
 
 writeOutput( '<img src="#randomCat.url#">' );
 ```
 
 ## Reference Manual
 
-#### `searchImages( required struct data )`
+#### `search( required struct data )`
 Search and iterate through all public images. For the `data` arguments, see the [documentation](https://docs.thecatapi.com/api-reference/images/images-search#request-parameters) for available parameters.
 
-#### `getRandomImage()`
-Convenience method that delegates to `searchImages()`, which returns a random image when no parameters are provided
+#### `getRandom()`
+Convenience method that delegates to `search()`, which returns a random image when no parameters are provided
 
 #### `listBreeds()`
 List available cat breeds and their properties

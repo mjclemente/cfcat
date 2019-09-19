@@ -49,15 +49,15 @@ component displayname="CFCat"  {
   * @hint Search and iterate through all public images
     @data see documentation for available parameters (https://docs.thecatapi.com/api-reference/images/images-search#request-parameters)
   */
-  public struct function searchImages( required struct data ) {
+  public struct function search( required struct data ) {
     return apiCall( 'GET', '/images/search', data );
   }
 
   /**
-  * @hint Convenience method that delegates to `searchImages()`, which returns a random image when no parameters are provided
+  * @hint Convenience method that delegates to `search()`, which returns a random image when no parameters are provided
   */
-  public struct function getRandomImage() {
-    var randomImage = searchImages( {} );
+  public struct function getRandom() {
+    var randomImage = search( {} );
     if( isArray( randomImage.data ) && randomImage.data.len() > 0 ) {
       randomImage.data = randomImage.data[ 1 ];
     }
