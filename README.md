@@ -29,8 +29,14 @@ writeOutput( '<img src="#randomCat.url#">' );
 #### `search( required struct data )`
 Search and iterate through all public images. For the `data` arguments, see the [documentation](https://docs.thecatapi.com/api-reference/images/images-search#request-parameters) for available parameters.
 
+#### `searchByCategory( required any category, required struct data )`
+Convenience method to define a category of images to search within (i.e. only cats in sunglasses). The `category` argument can be a single id, a comma separated list, or an array of category ids.
+
 #### `getRandom()`
 Convenience method that delegates to `search()`, which returns a random image when no parameters are provided
+
+#### `getRandomGif()`
+Convenience method that delegates to `search()` and provides the mime type argument. Sometimes you just need cat gifs.
 
 #### `listBreeds()`
 List available cat breeds and their properties
