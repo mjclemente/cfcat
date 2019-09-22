@@ -49,15 +49,48 @@ component displayname="CFCat"  {
   * @hint Search and iterate through all public images
     @data see documentation for available parameters (https://docs.thecatapi.com/api-reference/images/images-search#request-parameters)
   */
-  public struct function searchImages( required struct data ) {
+  public struct function search( required struct data ) {
     return apiCall( 'GET', '/images/search', data );
   }
 
   /**
-  * @hint Convenience method that delegates to `searchImages()`, which returns a random image when no parameters are provided
+  * https://docs.thecatapi.com/api-reference/images/images-search
+  * https://docs.thecatapi.com/example-by-category
+  * @hint Convenience method to define a category of images to search within (i.e. only cats in sunglasses)
+  * @category can be a single id, a comma separated list, or an array of category ids.
+    @data see documentation for available parameters (https://docs.thecatapi.com/api-reference/images/images-search#request-parameters)
   */
-  public struct function getRandomImage() {
-    var randomImage = searchImages( {} );
+  public struct function searchByCategory( required any category, required struct data ) {
+    var params = data;
+    var categoryIds = [];
+    if( isArray( category ) ) {
+      categoryIds = category;
+    } else {
+      categoryIds = listToArray( category );
+    }
+
+    params[ 'category_ids' ] = categoryIds;
+    return apiCall( 'GET', '/images/search', params );
+  }
+
+  /**
+  * @hint Convenience method that delegates to `search()`, which returns a random image when no parameters are provided
+  */
+  public struct function getRandom() {
+    var randomImage = search( {} );
+    if( isArray( randomImage.data ) && randomImage.data.len() > 0 ) {
+      randomImage.data = randomImage.data[ 1 ];
+    }
+
+    return randomImage;
+  }
+
+  /**
+  * https://docs.thecatapi.com/example-by-type
+  * @hint Convenience method that delegates to `search()` and provides the mime type argument. Sometimes you just need cat gifs.
+  */
+  public struct function getRandomGif() {
+    var randomImage = search( { "mime_types" = [ "gif" ] } );
     if( isArray( randomImage.data ) && randomImage.data.len() > 0 ) {
       randomImage.data = randomImage.data[ 1 ];
     }
