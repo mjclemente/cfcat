@@ -30,8 +30,8 @@
   ],
   "license":[
       {
-          "type":"https://github.com/mjclemente/cfcat/blob/master/LICENSE",
-          "URL":"MIT"
+          "type":"MIT",
+          "URL":"https://github.com/mjclemente/cfcat/blob/master/LICENSE"
       }
   ],
   "private":false,
