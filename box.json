@@ -1,8 +1,8 @@
 {
   "name": "CFCat",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author":"Matthew Clemente <mjclemente@gmail.com>",
-  "location": "mjclemente/cfcat#v0.6.0",
+  "location": "mjclemente/cfcat#v0.6.1",
   "homepage": "https://github.com/mjclemente/cfcat",
   "repository": {
     "type": "git",
