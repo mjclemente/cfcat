@@ -49,7 +49,7 @@ component displayname="CFCat"  {
   * @hint Search and iterate through all public images
     @data see documentation for available parameters (https://docs.thecatapi.com/api-reference/images/images-search#request-parameters)
   */
-  public struct function search( required struct data ) {
+  public struct function search( struct data = {} ) {
     return apiCall( 'GET', '/images/search', data );
   }
 
