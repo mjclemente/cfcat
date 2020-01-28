@@ -10,7 +10,8 @@ component displayname="CFCat"  {
   public any function init(
     string apiKey = '',
     string baseUrl = "https://api.thecatapi.com/v1",
-    boolean includeRaw = false ) {
+    boolean includeRaw = false,
+    numeric httpTimeout = 50 ) {
 
     structAppend( variables, arguments );
 
@@ -197,7 +198,7 @@ component displayname="CFCat"  {
       ? ( '?' & parseQueryParams( queryParams, false ) )
       : '' );
 
-    cfhttp( url = fullPath, method = httpMethod,  result = 'result' ) {
+    cfhttp( url = fullPath, method = httpMethod,  result = 'result', timeout = variables.httpTimeout ) {
 
       if ( isJsonPayload( headers ) ) {
 
