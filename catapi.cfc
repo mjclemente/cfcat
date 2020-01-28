@@ -5,7 +5,7 @@
 */
 component displayname="CFCat"  {
 
-  variables._cfcat_version = '0.6.1';
+  variables._cfcat_version = '0.6.3';
 
   public any function init(
     string apiKey = '',
